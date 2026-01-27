@@ -8,7 +8,24 @@
 ######################################################################
 p6df::modules::claudecode::deps() {
   ModuleDeps=(
+    p6m7g8-dotfiles/p6common
   )
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::claudecode::vscodes::config()
+#
+#>
+######################################################################
+p6df::modules::claudecode::vscodes::config() {
+
+  cat <<'EOF'
+  "claudeCode.preferredLocation": "sidebar"
+EOF
+
+  p6_return_void
 }
 
 ######################################################################
@@ -20,17 +37,12 @@ p6df::modules::claudecode::deps() {
 ######################################################################
 p6df::modules::claudecode::external::brew() {
 
-  p6_return_void
-}
+  p6df::core::homebrew::cli::brew::install install claude-cmd
+  p6df::core::homebrew::cli::brew::install install claude-code-templates
+  p6df::core::homebrew::cli::brew::install install claude-hooks
 
-######################################################################
-#<
-#
-# Function: p6df::modules::claudecode::home::symlink()
-#
-#>
-######################################################################
-p6df::modules::claudecode::home::symlink() {
+  p6df::core::homebrew::cli::brew::install install --cask claude
+  p6df::core::homebrew::cli::brew::install install --cask claude-code
 
   p6_return_void
 }
@@ -43,6 +55,32 @@ p6df::modules::claudecode::home::symlink() {
 #>
 ######################################################################
 p6df::modules::claudecode::aliases::init() {
+
+  # core
+  alias cl='claude'
+  alias clh='claude --help'
+  alias clv='claude --version'
+
+  # sessions
+  alias clsf='claude --resume --fork-session'
+  alias clsn='claude --no-session-persistence'
+
+  # common workflows
+  alias clp='claude --print'
+  alias cli='claude --interactive'
+  alias clc='claude --continue'
+  alias clr='claude --resume'
+
+  # debugging / verbosity
+  alias cld='CLAUDE_DEBUG=1 claude'
+  alias clvv='CLAUDE_DEBUG=1 CLAUDE_VERBOSE=1 claude'
+
+  # piping / unix-style usage
+  alias clx='xargs -I{} claude --print <<< "{}"'
+  alias clcat='claude --print <'
+
+  # config / env inspection
+  alias clenv='env | grep -i claude'
 
   p6_return_void
 }
