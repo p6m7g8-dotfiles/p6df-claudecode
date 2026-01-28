@@ -99,8 +99,8 @@ p6df::modules::claudecode::aliases::init() {
 p6df::modules::claudecode::prompt::mod() {
 
   local str
-  if ! p6_string_blank "$P6_DFZ_PROFILE_CLAUDE"; then
-    if ! p6_string_blank "$CLAUDE_CODE_OAUTH_TOKEN"; then
+  if p6_string_blank_NOT "$P6_DFZ_PROFILE_CLAUDE"; then
+    if p6_string_blank_NOT "$CLAUDE_CODE_OAUTH_TOKEN"; then
       str="claudecode:\t  $P6_DFZ_PROFILE_CLAUDE: oauth"
     fi
   fi
@@ -126,7 +126,7 @@ p6df::modules::claudecode::profile::on() {
 
   p6_env_export "P6_DFZ_PROFILE_CLAUDE" "$profile"
 
-  if ! p6_string_blank "$token"; then
+  if p6_string_blank_NOT "$token"; then
     p6_env_export "CLAUDE_CODE_OAUTH_TOKEN" "$token"
   fi
 
