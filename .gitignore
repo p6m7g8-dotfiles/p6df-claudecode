@@ -1,16 +1,1 @@
-share/claude/.claude.json
-share/claude/plugins
-share/claude/cache
-share/claude/history.jsonl
-share/claude/ide
-share/claude/settings.json
-share/claude/stats-cache.json
-share/claude/plugins
-share/claude/statsig
-share/claude/projects
-share/claude/debug
-share/claude/todos
-share/claude/file-history
-share/claude/paste-cache
-share/claude/plans
-share/claude/shell-snapshots
+share/
