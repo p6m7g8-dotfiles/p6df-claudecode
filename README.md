@@ -38,9 +38,12 @@ TODO: Add a short summary of this module.
 - `p6df::modules::claudecode::aliases::init()`
 - `p6df::modules::claudecode::deps()`
 - `p6df::modules::claudecode::external::brew()`
-- `p6df::modules::claudecode::home::symlink()`
 - `p6df::modules::claudecode::profile::off()`
 - `p6df::modules::claudecode::profile::on(profile, [token=])`
+  - Args:
+    - profile - 
+    - OPTIONAL token - []
+- `p6df::modules::claudecode::vscodes::config()`
 - `str str = p6df::modules::claudecode::prompt::mod()`
 
 ## Hierarchy
@@ -49,11 +52,9 @@ TODO: Add a short summary of this module.
 .
 ├── init.zsh
 ├── lib
-├── README.md
-└── share
-    └── claude
+└── README.md
 
-161 directories, 309 files
+2 directories, 2 files
 ```
 
 ## Author
