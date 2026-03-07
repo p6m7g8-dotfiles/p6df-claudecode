@@ -130,8 +130,6 @@ p6df::modules::claudecode::profile::on() {
     p6_env_export "CLAUDE_CODE_OAUTH_TOKEN" "$token"
   fi
 
-  p6df::modules::claudecode::mcp::env
-
   p6_return_void
 }
 
@@ -148,28 +146,20 @@ p6df::modules::claudecode::profile::off() {
   p6_env_export_un P6_DFZ_PROFILE_CLAUDE
   p6_env_export_un CLAUDE_CODE_OAUTH_TOKEN
 
-  p6df::modules::claudecode::mcp::env
-
   p6_return_void
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::modules::claudecode::mcp(_module, dir)
+# Function: p6df::modules::claudecode::mcp()
 #
-#  Args:
-#	_module -
-#	dir -
-#
+#  Environment:	 HOME
 #>
 ######################################################################
 p6df::modules::claudecode::mcp() {
-  local _module="$1"
-  local dir="$2"
 
-  p6df::core::homebrew::cli::brew::install install claude-cmd
-  p6df::core::homebrew::cli::brew::install install --cask claude-code
+  p6df::core::path::if "$HOME/.claude/bin"
 
   p6_return_void
 }
@@ -177,18 +167,12 @@ p6df::modules::claudecode::mcp() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::claudecode::mcp::env(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
+# Function: p6df::modules::claudecode::mcp::env()
 #
 #  Environment:	 ANTHROPIC_API_KEY CLAUDE_CODE_OAUTH_TOKEN
 #>
 ######################################################################
 p6df::modules::claudecode::mcp::env() {
-  local _module="$1"
-  local dir="$2"
 
   if p6_string_blank_NOT "$CLAUDE_CODE_OAUTH_TOKEN"; then
     p6_env_export "ANTHROPIC_API_KEY" "$CLAUDE_CODE_OAUTH_TOKEN"
