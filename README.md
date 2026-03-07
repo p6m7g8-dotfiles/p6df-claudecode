@@ -39,7 +39,10 @@ MCP server setup, and Anthropic API key management.
 - `p6df::modules::claudecode::aliases::init()`
 - `p6df::modules::claudecode::deps()`
 - `p6df::modules::claudecode::external::brew()`
-- `p6df::modules::claudecode::mcp()`
+- `p6df::modules::claudecode::init(_module, dir)`
+  - Args:
+    - _module
+    - dir
 - `p6df::modules::claudecode::mcp::env()`
 - `p6df::modules::claudecode::profile::off()`
 - `p6df::modules::claudecode::profile::on(profile, [token=])`
